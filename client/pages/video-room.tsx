@@ -3,6 +3,7 @@ import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import Layout from '../components/layout';
 import WebRTC from '../public/ts/webrtc';
+import SocketIOClient from '../public/ts/SocketIOClient';
 
 interface Props {}
 
@@ -14,6 +15,9 @@ export default function VideoRoom({}: Props): ReactElement {
   useEffect(() => {
     (async () => {
       // TODO signalling
+      const socketio = new SocketIOClient();
+      // Add me to the room
+      socketio.joinRoom();
 
       webrtc = new WebRTC(videoRef);
     })();
