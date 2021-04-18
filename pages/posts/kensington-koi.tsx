@@ -19,7 +19,16 @@ export default function KensingtonKoi({}: Props): ReactElement {
 
         // TODO specify stun/ turn servers
         const configuration = {
-          iceServers: [],
+          iceServers: [
+            {
+              urls: 'stun:stun.services.mozilla.com',
+              username: '',
+              credential: '',
+            },
+            {
+              urls: ['stun:stun.example.com', 'stun:stun-1.example.com'],
+            },
+          ],
         };
         const peerConnection = new RTCPeerConnection(configuration);
         peerConnection.addEventListener('icecandidate', (_event) => {});
