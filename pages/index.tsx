@@ -11,9 +11,9 @@ export default function Home() {
 
       <main>
         <h1 className='title'>
-          Click for{' '}
-          <Link href='/posts/kensington-koi/'>
-            <a>Kensington Koi</a>
+          Click to go to{' '}
+          <Link href='/posts/video-room/'>
+            <a>Video Room</a>
           </Link>
         </h1>
       </main>

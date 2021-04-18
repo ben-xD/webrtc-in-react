@@ -5,9 +5,10 @@ import Layout from '../../components/layout';
 
 interface Props {}
 
-export default function KensingtonKoi({}: Props): ReactElement {
+export default function VideoRoom({}: Props): ReactElement {
   const videoRef = useRef(null);
-
+  const [callButtonEnabled, setCallButtonEnabled] = useState(true);
+  const [hangUpButtonEnabled, setHangUpButtonEnabled] = useState(false);
   useEffect(() => {
     (async () => {
       const constraints = { video: true };
@@ -55,10 +56,22 @@ export default function KensingtonKoi({}: Props): ReactElement {
     })();
   }, []);
 
+  const callHandler = () => {
+    console.log('Call pressed');
+    setCallButtonEnabled(false);
+    setHangUpButtonEnabled(true);
+  };
+
+  const hangUpHandler = () => {
+    console.log('Call killed');
+    setCallButtonEnabled(true);
+    setHangUpButtonEnabled(false);
+  };
+
   return (
     <Layout>
       <Head>
-        <title>Kensington Koi</title>
+        <title>WebRTC Video Room</title>
       </Head>
       <div className='container'>
         <h1>Hello</h1>
@@ -73,6 +86,12 @@ export default function KensingtonKoi({}: Props): ReactElement {
           muted
           ref={videoRef}
         ></video>
+        <button onClick={callHandler} disabled={!callButtonEnabled}>
+          Call
+        </button>
+        <button onClick={hangUpHandler} disabled={!hangUpButtonEnabled}>
+          Hand up
+        </button>
       </div>
     </Layout>
   );
