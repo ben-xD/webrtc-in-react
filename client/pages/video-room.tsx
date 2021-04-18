@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
-import Layout from '../../components/layout';
-import WebRTC from '../../public/ts/webrtc';
+import Layout from '../components/layout';
+import WebRTC from '../public/ts/webrtc';
 
 interface Props {}
 
@@ -13,6 +13,8 @@ export default function VideoRoom({}: Props): ReactElement {
   let webrtc: WebRTC;
   useEffect(() => {
     (async () => {
+      // TODO signalling
+
       webrtc = new WebRTC(videoRef);
     })();
   }, []);

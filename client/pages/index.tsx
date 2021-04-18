@@ -12,7 +12,7 @@ export default function Home() {
       <main>
         <h1 className='title'>
           Click to go to{' '}
-          <Link href='/posts/video-room/'>
+          <Link href='/video-room/'>
             <a>Video Room</a>
           </Link>
         </h1>
